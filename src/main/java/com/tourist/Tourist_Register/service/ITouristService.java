@@ -7,4 +7,5 @@ import java.util.List;
 public interface ITouristService {
     public String registerTourist(Tourist tourist);
     public List<Tourist> gettingAllTourist();
+    public List<Tourist> gettingTouristByBudget(Double start, Double end);
 }

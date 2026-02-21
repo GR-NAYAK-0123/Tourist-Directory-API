@@ -24,4 +24,9 @@ public class TouristServiceImpl implements ITouristService{
     public List<Tourist> gettingAllTourist() {
         return touristRepo.findAll();
     }
+
+    @Override
+    public List<Tourist> gettingTouristByBudget(Double start, Double end) {
+        return touristRepo.getTouristByBudget(start, end);
+    }
 }

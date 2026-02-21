@@ -36,4 +36,15 @@ public class TouristController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/budget/{start}/{end}")
+    public ResponseEntity<?> findTouristByBudget(@PathVariable Double start, @PathVariable Double end){
+        try {
+            List<Tourist> list = touristService.gettingTouristByBudget(start, end);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
