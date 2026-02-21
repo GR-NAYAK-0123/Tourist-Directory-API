@@ -25,6 +25,7 @@ public class TouristServiceImpl implements ITouristService{
         return touristRepo.findAll();
     }
 
+    //This method will return all the tourist based on their budget range
     @Override
     public List<Tourist> gettingTouristByBudget(Double start, Double end) {
         return touristRepo.getTouristByBudget(start, end);
