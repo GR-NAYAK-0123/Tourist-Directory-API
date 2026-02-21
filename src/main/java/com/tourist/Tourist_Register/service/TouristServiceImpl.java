@@ -5,6 +5,8 @@ import com.tourist.Tourist_Register.repository.ITouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("touristService")
 @RequiredArgsConstructor
 public class TouristServiceImpl implements ITouristService{
@@ -15,5 +17,11 @@ public class TouristServiceImpl implements ITouristService{
     public String registerTourist(Tourist tourist) {
         Integer touristId = touristRepo.save(tourist).getId();
         return "Tourist details saved with id : "+touristId;
+    }
+
+    //This method gives all the tourists data
+    @Override
+    public List<Tourist> gettingAllTourist() {
+        return touristRepo.findAll();
     }
 }

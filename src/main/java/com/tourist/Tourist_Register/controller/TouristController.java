@@ -5,10 +5,9 @@ import com.tourist.Tourist_Register.service.ITouristService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/tourist-api")
@@ -21,6 +20,17 @@ public class TouristController {
         try {
             String resultMessage = touristService.registerTourist(tourist);
             return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/report")
+    public ResponseEntity<?> getAllTourist(){
+        try {
+            List<Tourist> list = touristService.gettingAllTourist();
+            return new ResponseEntity<>(list,HttpStatus.OK);
         }
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
