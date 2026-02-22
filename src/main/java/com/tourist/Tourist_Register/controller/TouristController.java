@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tourist-api")
@@ -53,6 +54,22 @@ public class TouristController {
         try {
             List<Tourist> list = touristService.gettingTouristByPackageType(packageType);
             return new ResponseEntity<>(list, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/Id/{id}")
+    public ResponseEntity<?> findTouristById(@PathVariable Integer id){
+        try {
+            Optional<Tourist> opt = touristService.gettingTouristById(id);
+            if (opt.isPresent()){
+                return new ResponseEntity<>(opt.get(), HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>("Tourist not found", HttpStatus.BAD_REQUEST);
+            }
         }
         catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

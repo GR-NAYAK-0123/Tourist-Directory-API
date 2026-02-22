@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ITouristRepository extends JpaRepository<Tourist, Integer> {
 
@@ -12,4 +13,6 @@ public interface ITouristRepository extends JpaRepository<Tourist, Integer> {
     public List<Tourist> getTouristByBudget(Double start, Double end);
 
     public List<Tourist> getByPackageType(String packageType);
+
+    //public Optional<Tourist> findById(Integer id);
 }

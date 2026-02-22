@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("touristService")
 @RequiredArgsConstructor
@@ -35,5 +36,10 @@ public class TouristServiceImpl implements ITouristService{
     @Override
     public List<Tourist> gettingTouristByPackageType(String packageType) {
         return touristRepo.getByPackageType(packageType);
+    }
+
+    @Override
+    public Optional<Tourist> gettingTouristById(Integer id) {
+        return touristRepo.findById(id);
     }
 }
