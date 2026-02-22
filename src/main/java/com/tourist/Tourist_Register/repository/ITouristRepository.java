@@ -13,6 +13,4 @@ public interface ITouristRepository extends JpaRepository<Tourist, Integer> {
     public List<Tourist> getTouristByBudget(Double start, Double end);
 
     public List<Tourist> getByPackageType(String packageType);
-
-    //public Optional<Tourist> findById(Integer id);
 }
