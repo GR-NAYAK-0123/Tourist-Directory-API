@@ -47,4 +47,15 @@ public class TouristController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/package/{packageType}")
+    public ResponseEntity<?> findTouristByPackageType(@PathVariable String packageType){
+        try {
+            List<Tourist> list = touristService.gettingTouristByPackageType(packageType);
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }

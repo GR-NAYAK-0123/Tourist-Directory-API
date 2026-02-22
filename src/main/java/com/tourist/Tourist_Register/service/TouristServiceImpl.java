@@ -30,4 +30,10 @@ public class TouristServiceImpl implements ITouristService{
     public List<Tourist> gettingTouristByBudget(Double start, Double end) {
         return touristRepo.getTouristByBudget(start, end);
     }
+
+    //This method returns the tourist list based on the packageType
+    @Override
+    public List<Tourist> gettingTouristByPackageType(String packageType) {
+        return touristRepo.getByPackageType(packageType);
+    }
 }

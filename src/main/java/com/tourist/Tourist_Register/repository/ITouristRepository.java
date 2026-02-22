@@ -10,4 +10,6 @@ public interface ITouristRepository extends JpaRepository<Tourist, Integer> {
 
     @Query("from Tourist where budget between :start and :end")
     public List<Tourist> getTouristByBudget(Double start, Double end);
+
+    public List<Tourist> getByPackageType(String packageType);
 }
