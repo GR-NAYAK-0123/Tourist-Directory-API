@@ -38,7 +38,7 @@ public class TouristServiceImpl implements ITouristService{
         return touristRepo.getByPackageType(packageType);
     }
 
-    //This method returns one tourist details based on his/her Id
+    //This method returns one tourist details based on his/her id
     @Override
     public Tourist gettingTouristById(Integer id) {
         return touristRepo.findById(id).orElseThrow(()-> new TouristNotFoundException(id+" Tourist is not Found"));
