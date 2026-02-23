@@ -1,13 +1,12 @@
 package com.tourist.Tourist_Register.service;
 
 import com.tourist.Tourist_Register.entity.Tourist;
-import com.tourist.Tourist_Register.error.TouristNotFoundException;
+import com.tourist.Tourist_Register.exception.TouristNotFoundException;
 import com.tourist.Tourist_Register.repository.ITouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service("touristService")
 @RequiredArgsConstructor

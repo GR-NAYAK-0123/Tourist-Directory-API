@@ -1,7 +1,5 @@
 package com.tourist.Tourist_Register.exception;
 
-import com.tourist.Tourist_Register.entity.ErrorDetails;
-import com.tourist.Tourist_Register.error.TouristNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

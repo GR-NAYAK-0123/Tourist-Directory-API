@@ -1,4 +1,4 @@
-package com.tourist.Tourist_Register.entity;
+package com.tourist.Tourist_Register.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
