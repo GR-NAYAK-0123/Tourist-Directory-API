@@ -17,62 +17,32 @@ public class TouristController {
     private final ITouristService touristService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> touristSave(@RequestBody Tourist tourist){
-        try {
+    public ResponseEntity<?> touristSave(@RequestBody Tourist tourist) throws Exception{
             String resultMessage = touristService.registerTourist(tourist);
             return new ResponseEntity<>(resultMessage, HttpStatus.CREATED);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping("/report")
-    public ResponseEntity<?> getAllTourist(){
-        try {
+    public ResponseEntity<?> getAllTourist() throws Exception{
             List<Tourist> list = touristService.gettingAllTourist();
             return new ResponseEntity<>(list,HttpStatus.OK);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping("/budget/{start}/{end}")
-    public ResponseEntity<?> findTouristByBudget(@PathVariable Double start, @PathVariable Double end){
-        try {
+    public ResponseEntity<?> findTouristByBudget(@PathVariable Double start, @PathVariable Double end) throws Exception{
             List<Tourist> list = touristService.gettingTouristByBudget(start, end);
             return new ResponseEntity<>(list, HttpStatus.OK);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping("/package/{packageType}")
-    public ResponseEntity<?> findTouristByPackageType(@PathVariable String packageType){
-        try {
+    public ResponseEntity<?> findTouristByPackageType(@PathVariable String packageType) throws Exception{
             List<Tourist> list = touristService.gettingTouristByPackageType(packageType);
             return new ResponseEntity<>(list, HttpStatus.OK);
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
     }
 
     @GetMapping("/Id/{id}")
-    public ResponseEntity<?> findTouristById(@PathVariable Integer id){
-        try {
-            Optional<Tourist> opt = touristService.gettingTouristById(id);
-            if (opt.isPresent()){
-                return new ResponseEntity<>(opt.get(), HttpStatus.OK);
-            }
-            else {
-                return new ResponseEntity<>("Tourist not found", HttpStatus.BAD_REQUEST);
-            }
-        }
-        catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<?> findTouristById(@PathVariable Integer id) throws Exception{
+        Tourist tourist = touristService.gettingTouristById(id);
+            return new ResponseEntity<>(tourist, HttpStatus.OK);
     }
 }

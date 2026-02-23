@@ -10,5 +10,5 @@ public interface ITouristService {
     public List<Tourist> gettingAllTourist();
     public List<Tourist> gettingTouristByBudget(Double start, Double end);
     public List<Tourist> gettingTouristByPackageType(String packageType);
-    public Optional<Tourist> gettingTouristById(Integer id);
+    public Tourist gettingTouristById(Integer id);
 }

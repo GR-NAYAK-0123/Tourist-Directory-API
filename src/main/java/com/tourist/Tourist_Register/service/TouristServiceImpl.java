@@ -1,6 +1,7 @@
 package com.tourist.Tourist_Register.service;
 
 import com.tourist.Tourist_Register.entity.Tourist;
+import com.tourist.Tourist_Register.error.TouristNotFoundException;
 import com.tourist.Tourist_Register.repository.ITouristRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,8 +39,9 @@ public class TouristServiceImpl implements ITouristService{
         return touristRepo.getByPackageType(packageType);
     }
 
+    //This method returns one tourist details based on his/her Id
     @Override
-    public Optional<Tourist> gettingTouristById(Integer id) {
-        return touristRepo.findById(id);
+    public Tourist gettingTouristById(Integer id) {
+        return touristRepo.findById(id).orElseThrow(()-> new TouristNotFoundException(id+" Tourist is not Found"));
     }
 }
